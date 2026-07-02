@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game Hub</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+            background-color: #222; 
+            color: white; 
+        }
+        .game-box { 
+            display: inline-block; 
+            margin: 20px; 
+            padding: 30px; 
+            border: 2px solid #555; 
+            border-radius: 10px; 
+            background-color: #333; 
+            transition: 0.3s; 
+            width: 200px;
+        }
+        .game-box:hover { 
+            transform: scale(1.05); 
+            border-color: #4CAF50; 
+            background-color: #444;
+        }
+        a { 
+            color: #4CAF50; 
+            text-decoration: none; 
+            font-size: 20px; 
+            font-weight: bold; 
+        }
+        .coming-soon {
+            color: #888;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Tharathep's Game Dev Journey</h1>
+    <p>Choose a game to play!</p>
+
+    <!-- กล่องสำหรับ Game 21 -->
+    <div class="game-box">
+        <h2>Game 21</h2>
+        <a href="Game21/Game21.html">▶️ Play Now</a>
+    </div>
+
+    <!-- กล่องสำหรับ Game 31 (เตรียมไว้ล่วงหน้า ยังกดไม่ได้) -->
+    <div class="game-box">
+        <h2>Game 31</h2>
+        <a href="#" class="coming-soon">⏳ Coming Soon</a>
+    </div>
+
+    <!-- กล่องสำหรับ Game 41 (เตรียมไว้ล่วงหน้า ยังกดไม่ได้) -->
+    <div class="game-box">
+        <h2>Game 41</h2>
+        <a href="#" class="coming-soon">⏳ Coming Soon</a>
+    </div>
+
+</body>
+</html>
