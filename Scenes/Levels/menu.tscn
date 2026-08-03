@@ -1,15 +1,27 @@
 [gd_scene format=3 uid="uid://b6tvaxw54wsq0"]
 
 [ext_resource type="Script" uid="uid://tkynu7pd01lh" path="res://Scenes/Levels/menu.gd" id="1_hq2ph"]
+[ext_resource type="Texture2D" uid="uid://dq6ju8a2n5cdf" path="res://Assets/BG/514320667_24231901626403529_3810538486724771594_n.jpg" id="2_7pnm7"]
+[ext_resource type="Texture2D" uid="uid://deo7pn8coqipi" path="res://Assets/BG/CP.png" id="3_lli10"]
+[ext_resource type="AudioStream" uid="uid://bg6nultq2n7y2" path="res://Assets/Sound/NO BATIDÃO (Slowed).mp3" id="4_lli10"]
 
 [node name="Node2D" type="Node2D" unique_id=827773846]
 script = ExtResource("1_hq2ph")
+
+[node name="514320667242319016264035293810538486724771594N" type="Sprite2D" parent="." unique_id=2056385005]
+position = Vector2(578, 324)
+scale = Vector2(0.73516273, 0.6167464)
+texture = ExtResource("2_7pnm7")
+
+[node name="Cp" type="Sprite2D" parent="." unique_id=327436570]
+position = Vector2(579, 64)
+texture = ExtResource("3_lli10")
 
 [node name="UI" type="Control" parent="." unique_id=2061607031]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
-offset_bottom = 524.0
+offset_bottom = 647.0
 
 [node name="btnStart" type="Button" parent="UI" unique_id=843125025]
 layout_mode = 1
@@ -53,14 +65,27 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -76.5
-offset_top = 371.0
-offset_right = 78.5
-offset_bottom = 435.0
+offset_left = 413.5
+offset_top = 572.0
+offset_right = 568.5
+offset_bottom = 636.0
 grow_horizontal = 2
-text = "Credit"
+text = "Development Team"
+
+[node name="Exit" type="Button" parent="UI" unique_id=562242307]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 367.0
+offset_right = 658.0
+offset_bottom = 433.0
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=740371975]
+stream = ExtResource("4_lli10")
+volume_db = -28.281
 
 [connection signal="pressed" from="UI/btnStart" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="UI/btnContinue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="UI/btnOption" to="." method="_on_btn_option_pressed"]
 [connection signal="pressed" from="UI/btnCredit" to="." method="_on_btn_credit_pressed"]
+[connection signal="pressed" from="UI/Exit" to="." method="_on_exit_pressed"]
