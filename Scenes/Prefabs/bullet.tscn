@@ -5,15 +5,15 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pkqe3"]
 friction = 0.5
-bounce = 0.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mqoqv"]
 radius = 6.708204
 
 [node name="Bullet" type="RigidBody2D" unique_id=737966296 groups=["Bullet"]]
-collision_layer = 2
-collision_mask = 5
+collision_layer = 6
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_pkqe3")
+lock_rotation = true
 script = ExtResource("1_yovq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=441138516]
@@ -21,6 +21,7 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_mqoqv")
 
 [node name="Bullet" type="Sprite2D" parent="." unique_id=308939572]
-position = Vector2(-0.1641778, -0.3124994)
-scale = Vector2(0.24490353, 0.2572188)
+scale = Vector2(0.085365854, 0.010638286)
 texture = ExtResource("1_pkqe3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

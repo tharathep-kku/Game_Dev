@@ -11,7 +11,7 @@ var max_hp  :int = 100
 var sfx_on = true
 var music_on = true
 
-var player :Player = null
+var player = null
 var current_level : String = "res://Scenes/Levels/level_01.tscn"
 var save_path := "user://game.save"
 var save_player_position = Vector2.ZERO
@@ -55,8 +55,9 @@ func death():
 	if player != null:
 		await player.death_tween()
 	life -= 1
+	hp = max_hp
 	if life <= 0:
-		get_tree().change_scene_to_file("res://Scenes/Levels/game_over.tscn")	
+		get_tree().change_scene_to_file("res://Scenes/Levels/game_over.tscn")
 
 func save_option():
 	var file = FileAccess.open("user://option.json", FileAccess.WRITE)

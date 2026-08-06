@@ -1,4 +1,4 @@
-class_name Player2
+class_name Player
 extends CharacterBody2D
 
 signal hit_enemy
@@ -9,6 +9,8 @@ signal hit_trap
 
 @export_category("Player Properties") # You can tweak these changes according to your likings
 @export var move_speed : float = 300
+@export var run_speed_multiplier : float = 1.5
+var is_running : bool = false
 @export var jump_force : float = 650
 @export var gravity : float = 30
 @export var max_jump_count : int = 2
@@ -28,8 +30,8 @@ var is_attacking = false
 var shoot_cooldown_timer = 0.0
 var can_damage = true
 
-@onready var player_sprite : AnimationPlayer = $student/AnimationPlayer
-@onready var player_node = $student
+@onready var player_sprite : AnimatedSprite2D = $soldier/AnimatedSprite2D
+@onready var player_node = $soldier
 @onready var bullet_marker = $BulletMarker
 @onready var particle_trails = $ParticleTrails
 @onready var death_particles = $DeathParticles
@@ -68,12 +70,15 @@ func movement():
 	
 	handle_jumping()
 	
+	is_running = Input.is_key_pressed(KEY_SHIFT)
+	var current_speed = move_speed * (run_speed_multiplier if is_running else 1.0)
+	
 	# Move Player
 	if movement_enabled:
 		if Input.is_action_pressed("Left"):
-			velocity.x = -move_speed
+			velocity.x = -current_speed # แก้ไข: เปลี่ยนจาก -move_speed เป็น -current_speed
 		if Input.is_action_pressed("Right"):
-			velocity.x = move_speed
+			velocity.x = current_speed  # แก้ไข: เปลี่ยนจาก move_speed เป็น current_speed
 	if velocity.y > 5000:
 		hit_trap.emit()
 	move_and_slide()
@@ -102,19 +107,27 @@ func player_animations():
 	if is_on_floor():
 		if abs(velocity.x) > 0:
 			particle_trails.emitting = true
-			player_sprite.current_animation = "Walk"
+			if is_running:
+				player_sprite.play("run")
+			else:
+				player_sprite.play("walk")
 		else:
-			player_sprite.current_animation = "Idle"
+			player_sprite.play("idle")
 	else:
-		player_sprite.current_animation = "Jump"
+		player_sprite.play("idle")
 
 
+# Flip player sprite based on X velocity
 # Flip player sprite based on X velocity
 func flip_player():
 	if velocity.x < 0: 
 		player_node.scale.x = -1
+		# สั่งกลับด้านตำแหน่ง X ของ BulletMarker เมื่อหันซ้าย
+		bullet_marker.position.x = -abs(bullet_marker.position.x)
 	elif velocity.x > 0:
 		player_node.scale.x = 1
+		# สั่งคืนค่าตำแหน่ง X ของ BulletMarker เมื่อหันขวา
+		bullet_marker.position.x = abs(bullet_marker.position.x)
 
 # Tween Animations
 func death_tween():
@@ -164,7 +177,7 @@ func _on_collision_body_entered(body):
 		if dx > 0:
 			velocity.x = -300
 		else:
-			velocity.x = 300					
+			velocity.x = 300
 		damage_tween()
 		hit_enemy.emit()
 
@@ -176,17 +189,21 @@ func shoot():
 	if bullet_scene == null:
 		return
 	is_attacking = true
-	player_sprite.play("Attack")
+	player_sprite.play("attack") # แก้ไข: เปลี่ยนจาก "Attack" เป็น "attack"
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_marker.global_position
-	var angle = deg_to_rad(randf_range(0, 20))
+	#var angle = deg_to_rad(randf_range(0, 20))
 	var sign_x = 1.0 if player_node.scale.x > 0 else -1.0
-	var dir = Vector2(cos(angle) * sign_x, -sin(angle))
+	#var dir = Vector2(cos(angle) * sign_x, -sin(angle))
+	var dir = Vector2(sign_x, 0)
 	get_parent().add_child(bullet)
 	bullet.shoot(dir, 600, bullet_lifetime)
+	AudioManager.Gun_Sound_sfx.play()
 	shoot_cooldown_timer = shoot_cooldown_time
-
-func _on_animation_finished(anim_name: String) -> void:
-	if anim_name == "Attack":
-		is_attacking = false
+	await get_tree().create_timer(0.25).timeout
+	is_attacking = false
 	
+func _on_animation_finished() -> void:
+	# แก้ไข: AnimatedSprite2D ไม่มี parameter และเช็กชื่อแอนิเมชันด้วย .animation
+	if player_sprite.animation == "attack":
+		is_attacking = false

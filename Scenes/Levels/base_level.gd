@@ -2,7 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.player = %Player
+	GameManager.player = $Player2
 	$MusicPlayer.play(0)
 	var tween = create_tween()
 	$UserInterface/Label.scale = Vector2.ZERO
@@ -16,7 +16,7 @@ func _on_player_hit_enemy() -> void:
 	GameManager.damage(5)	
 
 func _on_player_hit_trap() -> void:
-	GameManager.death()
+	GameManager.damage(20)
 
 
 func _on_music_player_finished() -> void:

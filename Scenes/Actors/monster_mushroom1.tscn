@@ -98,7 +98,9 @@ position = Vector2(0, -33)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_fn0gs")
 
-[node name="CollisionShape2D2" parent="HitArea" parent_id_path=PackedInt32Array(1115411835) index="0" unique_id=2008793250]
+[node name="HitArea" parent="." index="1" unique_id=1115411835 groups=["Enemy"]]
+
+[node name="CollisionShape2D2" parent="HitArea" index="0" unique_id=2008793250]
 position = Vector2(0, -33)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_gv858")

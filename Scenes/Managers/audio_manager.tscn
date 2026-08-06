@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://d2yw2hs5pd8cm" path="res://Assets/Sound/FX/coin_pickup.wav" id="3_qes3j"]
 [ext_resource type="AudioStream" uid="uid://b5gyns7mtiq0d" path="res://Assets/Sound/FX/hurt.wav" id="4_84782"]
 [ext_resource type="AudioStream" uid="uid://cbquowt7cd3d6" path="res://Assets/Sound/FX/level_complete.wav" id="5_84782"]
+[ext_resource type="AudioStream" uid="uid://cxegctpnfhjhf" path="res://Assets/Sound/FX/762x39 Single Isolated MP3.mp3" id="6_brptx"]
 
 [node name="AudioManager" type="Node" unique_id=1179160635]
 script = ExtResource("1_hp1cr")
@@ -29,4 +30,8 @@ bus = &"sfx"
 [node name="LevelCompleteSfx" type="AudioStreamPlayer" parent="." unique_id=1672470775]
 stream = ExtResource("5_84782")
 volume_db = -4.0
+bus = &"sfx"
+
+[node name="Gun_sound" type="AudioStreamPlayer" parent="." unique_id=838025538]
+stream = ExtResource("6_brptx")
 bus = &"sfx"
