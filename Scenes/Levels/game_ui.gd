@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var score_label = %ScoreLabel
 @onready var hp_bar = %ProgressBar
+@onready var ammo_label = %AmmoLabel
 @onready var alert_label: Label = $GameUI/BottomBar/AlertLabel
 
 func _process(_delta):
@@ -12,6 +13,11 @@ func _process(_delta):
 	$GameUI/TopBar/btnSound/mute.visible = !GameManager.sfx_on
 	$GameUI/TopBar/btnMusic/mute.visible = !GameManager.music_on
 	$GameUI/TopBar/LifeRect.size.x = 48 * GameManager.life
+	if GameManager.player:
+		if GameManager.player.reloading:
+			ammo_label.text = "Reloading..."
+		else:
+			ammo_label.text = "Ammo: %d/%d" % [GameManager.player.ammo, GameManager.player.max_ammo]
 
 func alert(text):
 	alert_label.text = text

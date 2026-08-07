@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjb01a2b3c4d5"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/jump_board.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://k2vxuax60b7n" path="res://Assets/Kenney/Objects/spring.png" id="2_spring"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb1"]
+size = Vector2(48, 24)
+
+[node name="JumpBoard" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_jb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_spring")

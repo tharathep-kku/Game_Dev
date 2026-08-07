@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://c5y568p25r7rl" path="res://Scenes/Prefabs/bullet.tscn" id="2_m8xdl"]
 [ext_resource type="PackedScene" uid="uid://be6bg2ybbu81m" path="res://Scenes/Sprites/soldier.tscn" id="3_d64iu"]
 [ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_wrdd2"]
+[ext_resource type="PackedScene" uid="uid://vxhfafaw7e8f" path="res://Scenes/Prefabs/bomb_projectile.tscn" id="4_bombproj"]
+[ext_resource type="Script" path="res://Scenes/Actors/side_scroll_camera.gd" id="5_camlock"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d64iu"]
 radius = 13.999144
-height = 31.998291
+height = 69.998276
 
 [sub_resource type="Curve" id="Curve_rtimg"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246032, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -33,9 +35,10 @@ rotation = 0.00042652956
 collision_layer = 2
 script = ExtResource("1_d64iu")
 bullet_scene = ExtResource("2_m8xdl")
+bomb_projectile_scene = ExtResource("4_bombproj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353250760]
-position = Vector2(-3.9795253, 48.001705)
+position = Vector2(-3.9872038, 30.001707)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CapsuleShape2D_d64iu")
 
@@ -92,6 +95,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=339786768]
 position = Vector2(-2.978247, 51.001278)
+script = ExtResource("5_camlock")
 limit_smoothed = true
 position_smoothing_speed = 100.0
 drag_horizontal_enabled = true
@@ -104,5 +108,11 @@ editor_draw_drag_margin = true
 [node name="BulletMarker" type="Marker2D" parent="." unique_id=1128170114]
 position = Vector2(35.00597, 13.985071)
 scale = Vector2(1.0000001, 1.0000001)
+
+[node name="ShieldVisual" type="Polygon2D" parent="." unique_id=1128170115]
+visible = false
+position = Vector2(-3, 30)
+color = Color(0.3, 0.8, 1, 0.35)
+polygon = PackedVector2Array(42, 0, 38.79, 16.08, 29.7, 29.7, 16.08, 38.79, 0, 42, -16.08, 38.79, -29.7, 29.7, -38.79, 16.08, -42, 0, -38.79, -16.08, -29.7, -29.7, -16.08, -38.79, 0, -42, 16.08, -38.79, 29.7, -29.7, 38.79, -16.08)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_collision_body_entered"]

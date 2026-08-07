@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cu330rtij8nnc"]
+
+[ext_resource type="Script" uid="uid://qkro2yp7trua" path="res://Scenes/Levels/endless_level.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cyti38f0lagf2" path="res://Scenes/Prefabs/level_finish_door.tscn" id="2_door"]
+[ext_resource type="PackedScene" uid="uid://douri0f526muw" path="res://Scenes/Actors/player2.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://cdwabmqtlxr1y" path="res://Scenes/Levels/game_ui.tscn" id="4_ui"]
+[ext_resource type="Theme" uid="uid://d3eng5cvycmjf" path="res://Scenes/Prefabs/theme.tres" id="5_theme"]
+[ext_resource type="AudioStream" uid="uid://dhmn57nc23ah1" path="res://Assets/Sound/walen.ogg" id="6_music"]
+
+[node name="EndlessLevel" type="Node2D" unique_id=50917965]
+script = ExtResource("1_script")
+
+[node name="LevelFinishDoor" parent="." unique_id=1726928934 instance=ExtResource("2_door")]
+z_index = 1
+
+[node name="Level" type="Node2D" parent="." unique_id=458038452]
+
+[node name="Sky" type="Parallax2D" parent="Level" unique_id=2080829671]
+z_index = -12
+scroll_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite" type="Sprite2D" parent="Level/Sky" unique_id=244237716]
+position = Vector2(576, 260)
+
+[node name="Background1" type="Parallax2D" parent="Level" unique_id=806698820]
+z_index = -10
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background1" unique_id=1990228562]
+position = Vector2(576, 260)
+
+[node name="Background2" type="Parallax2D" parent="Level" unique_id=1084424210]
+z_index = -9
+scroll_scale = Vector2(0.45, 0.45)
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background2" unique_id=1512325663]
+position = Vector2(576, 260)
+
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=983222745]
+
+[node name="Player2" parent="." unique_id=1996885873 instance=ExtResource("3_player")]
+position = Vector2(302, 471.99997)
+
+[node name="Coins" type="Node2D" parent="." unique_id=359131943]
+z_index = 2
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1098574950]
+
+[node name="UserInterface" parent="." unique_id=75766699 instance=ExtResource("4_ui")]
+
+[node name="Label" type="Label" parent="UserInterface" unique_id=1901591162]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -50.0
+offset_right = 180.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_theme")
+theme_override_font_sizes/font_size = 32
+text = "Stage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=388487253]
+stream = ExtResource("6_music")
+bus = &"music"
+
+[connection signal="hit_enemy" from="Player2" to="." method="_on_player_hit_enemy"]
+[connection signal="hit_trap" from="Player2" to="." method="_on_player_hit_trap"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

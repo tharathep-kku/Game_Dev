@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddebris001a2b"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/thrown_debris.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_debris1"]
+radius = 8.0
+
+[node name="ThrownDebris" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_debris1")
+
+[node name="Rock" type="Polygon2D" parent="."]
+color = Color(0.35, 0.32, 0.28, 1)
+polygon = PackedVector2Array(-8, -3, -3, -8, 4, -7, 8, 0, 5, 7, -4, 8, -8, 3)

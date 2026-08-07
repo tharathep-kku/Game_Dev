@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var damage : int = 10
+
 var move_direction : Vector2 = Vector2.ZERO
 var move_speed : float = 0.0
 

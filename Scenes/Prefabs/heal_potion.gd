@@ -3,8 +3,8 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().create_timer(randf_range(0,1)).timeout
 	$AnimationPlayer.play("move")
+	$AnimationPlayer.seek(randf_range(0.0, $AnimationPlayer.get_animation("move").length), true)
 
 
 func _on_body_entered(body: Node2D) -> void:

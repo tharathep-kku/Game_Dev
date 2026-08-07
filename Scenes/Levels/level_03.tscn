@@ -1,12 +1,290 @@
-[gd_scene format=3 uid="uid://towe6jtciome"]
+[gd_scene format=4]
 
-[ext_resource type="PackedScene" uid="uid://bjntpxb1c8jxn" path="res://Scenes/Levels/base_level.tscn" id="1_8r7r2"]
-[ext_resource type="PackedScene" uid="uid://b46lxwc5r3dy4" path="res://Scenes/Levels/game_win.tscn" id="2_dcfph"]
+[ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_lvjrj"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/level_finish_door.tscn" id="2_40tso"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/level_finish_door.gd" id="3_6adao"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/level_04.tscn" id="4_40tso"]
+[ext_resource type="TileSet" path="res://Scenes/Prefabs/zombie_tile_set.tres" id="4_xfsn8"]
+[ext_resource type="Texture2D" path="res://Assets/Backgrounds/Postapocalypse3/sky.png" id="6_40tso"]
+[ext_resource type="Texture2D" path="res://Assets/Backgrounds/Postapocalypse3/sand_back.png" id="7_6adao"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_1.tscn" id="8_k1xo5"]
+[ext_resource type="Texture2D" path="res://Assets/Backgrounds/Postapocalypse3/sand_objects1.png" id="8_xfsn8"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_blade.tscn" id="9_275aq"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_lava.tscn" id="10_mwcd1"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/trap_blade.gd" id="11_d7ihf"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_2.tscn" id="11_t8tp1"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/moving_platform.tscn" id="12_qreld"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/trap_lava.gd" id="13_x1c0p"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/moving_platform.gd" id="13_ypb6j"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/jump_board.tscn" id="14_dtc5s"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/jump_board.gd" id="15_q72fv"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/portal_gate.tscn" id="16_xtuen"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/portal_gate.gd" id="17_1usoa"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player2.tscn" id="18_o1fe5"]
+[ext_resource type="Script" path="res://Scenes/Actors/player_2.gd" id="19_ednak"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/bullet.tscn" id="20_3443q"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/kill_zone.tscn" id="21_k1xo5"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/bomb_projectile.tscn" id="21_wrma8"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/kill_zone.gd" id="22_275aq"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/shield_pickup.tscn" id="22_3078y"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/shield_pickup.gd" id="23_vb1u5"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/heal_potion.tscn" id="24_gg788"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/heal_potion.gd" id="25_a6oxl"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Coin.tscn" id="26_mj3ph"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/coin.gd" id="27_fpluf"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/monster_mushroom1.tscn" id="28_ynvip"]
+[ext_resource type="Script" path="res://Scenes/Actors/monster_small.gd" id="29_dfrm1"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/monster_mushroom2.tscn" id="31_2atg1"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/monster_zombie4.tscn" id="31_l5akh"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/game_ui.tscn" id="32_0phub"]
+[ext_resource type="Script" path="res://Scenes/Levels/game_ui.gd" id="33_alga1"]
+[ext_resource type="Theme" path="res://Scenes/Prefabs/theme.tres" id="34_868mf"]
+[ext_resource type="AudioStream" path="res://Assets/Sound/walen.ogg" id="35_8ftg7"]
 
-[node name="BaseLevel" unique_id=1997201631 instance=ExtResource("1_8r7r2")]
+[node name="Level_03" type="Node2D" unique_id=1276277325]
+script = ExtResource("1_lvjrj")
 
-[node name="LevelFinishDoor" parent="." index="0" unique_id=1788542095]
-next_scene = ExtResource("2_dcfph")
+[node name="LevelFinishDoor" type="Area2D" parent="." unique_id=1136132539 instance=ExtResource("2_40tso")]
+z_index = 1
+position = Vector2(3488, 544)
+collision_mask = 2
+script = ExtResource("3_6adao")
+next_scene = ExtResource("4_40tso")
 
-[node name="Label" parent="UserInterface" parent_id_path=PackedInt32Array(1799764374) index="1" unique_id=1103718868]
+[node name="Level" type="Node2D" parent="." unique_id=1692721664]
+
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=358527490]
+tile_map_data = PackedByteArray("AAAAAAkAAAABAAgAAAAAAAoAAAAMAAcAAAAAAAsAAAAMAAcAAAAAAAwAAAAMAAcAAAAAAA0AAAAMAAcAAAABAAkAAAABAAgAAAABAAoAAAAMAAcAAAABAAsAAAAMAAcAAAABAAwAAAAMAAcAAAABAA0AAAAMAAcAAAACAAkAAAABAAgAAAACAAoAAAAMAAcAAAACAAsAAAAMAAcAAAACAAwAAAAMAAcAAAACAA0AAAAMAAcAAAADAAkAAAABAAgAAAADAAoAAAAMAAcAAAADAAsAAAAMAAcAAAADAAwAAAAMAAcAAAADAA0AAAAMAAcAAAAEAAkAAAABAAgAAAAEAAoAAAAMAAcAAAAEAAsAAAAMAAcAAAAEAAwAAAAMAAcAAAAEAA0AAAAMAAcAAAAFAAkAAAABAAgAAAAFAAoAAAAMAAcAAAAFAAsAAAAMAAcAAAAFAAwAAAAMAAcAAAAFAA0AAAAMAAcAAAAGAAkAAAABAAgAAAAGAAoAAAAMAAcAAAAGAAsAAAAMAAcAAAAGAAwAAAAMAAcAAAAGAA0AAAAMAAcAAAAHAAkAAAABAAgAAAAHAAoAAAAMAAcAAAAHAAsAAAAMAAcAAAAHAAwAAAAMAAcAAAAHAA0AAAAMAAcAAAALAAkAAAAQAA8AAAALAAoAAAANAA8AAAALAAsAAAANAA8AAAALAAwAAAANAA8AAAALAA0AAAANAA8AAAAMAAkAAAAPAA8AAAAMAAoAAAAMAA8AAAAMAAsAAAAMAA8AAAAMAAwAAAAMAA8AAAAMAA0AAAAMAA8AAAANAAkAAAAPAA8AAAANAAoAAAAMAA8AAAANAAsAAAAMAA8AAAANAAwAAAAMAA8AAAANAA0AAAAMAA8AAAAOAAkAAAAPAA8AAAAOAAoAAAAMAA8AAAAOAAsAAAAMAA8AAAAOAAwAAAAMAA8AAAAOAA0AAAAMAA8AAAAPAAkAAAAPAA8AAAAPAAoAAAAMAA8AAAAPAAsAAAAMAA8AAAAPAAwAAAAMAA8AAAAPAA0AAAAMAA8AAAAQAAkAAAAPAA8AAAAQAAoAAAAMAA8AAAAQAAsAAAAMAA8AAAAQAAwAAAAMAA8AAAAQAA0AAAAMAA8AAAARAAkAAAAPAA8AAAARAAoAAAAMAA8AAAARAAsAAAAMAA8AAAARAAwAAAAMAA8AAAARAA0AAAAMAA8AAAASAAkAAAAPAA8AAAASAAoAAAAMAA8AAAASAAsAAAAMAA8AAAASAAwAAAAMAA8AAAASAA0AAAAMAA8AAAATAAkAAAARAA8AAAATAAoAAAAOAA8AAAATAAsAAAAOAA8AAAATAAwAAAAOAA8AAAATAA0AAAAOAA8AAAAcAAkAAAAQAA8AAAAcAAoAAAANAA8AAAAcAAsAAAANAA8AAAAcAAwAAAANAA8AAAAcAA0AAAANAA8AAAAdAAkAAAAPAA8AAAAdAAoAAAAMAA8AAAAdAAsAAAAMAA8AAAAdAAwAAAAMAA8AAAAdAA0AAAAMAA8AAAAeAAkAAAAPAA8AAAAeAAoAAAAMAA8AAAAeAAsAAAAMAA8AAAAeAAwAAAAMAA8AAAAeAA0AAAAMAA8AAAAfAAkAAAAPAA8AAAAfAAoAAAAMAA8AAAAfAAsAAAAMAA8AAAAfAAwAAAAMAA8AAAAfAA0AAAAMAA8AAAAgAAkAAAAPAA8AAAAgAAoAAAAMAA8AAAAgAAsAAAAMAA8AAAAgAAwAAAAMAA8AAAAgAA0AAAAMAA8AAAAhAAkAAAAPAA8AAAAhAAoAAAAMAA8AAAAhAAsAAAAMAA8AAAAhAAwAAAAMAA8AAAAhAA0AAAAMAA8AAAAiAAkAAAAPAA8AAAAiAAoAAAAMAA8AAAAiAAsAAAAMAA8AAAAiAAwAAAAMAA8AAAAiAA0AAAAMAA8AAAAjAAkAAAAPAA8AAAAjAAoAAAAMAA8AAAAjAAsAAAAMAA8AAAAjAAwAAAAMAA8AAAAjAA0AAAAMAA8AAAAkAAkAAAAPAA8AAAAkAAoAAAAMAA8AAAAkAAsAAAAMAA8AAAAkAAwAAAAMAA8AAAAkAA0AAAAMAA8AAAAlAAkAAAAPAA8AAAAlAAoAAAAMAA8AAAAlAAsAAAAMAA8AAAAlAAwAAAAMAA8AAAAlAA0AAAAMAA8AAAAmAAkAAAAPAA8AAAAmAAoAAAAMAA8AAAAmAAsAAAAMAA8AAAAmAAwAAAAMAA8AAAAmAA0AAAAMAA8AAAAnAAkAAAARAA8AAAAnAAoAAAAOAA8AAAAnAAsAAAAOAA8AAAAnAAwAAAAOAA8AAAAnAA0AAAAOAA8AAAAmAAQAAAACABAAAAAnAAQAAAADABAAAAAoAAQAAAAEABAAAAAtAAkAAAAQAA8AAAAtAAoAAAANAA8AAAAtAAsAAAANAA8AAAAtAAwAAAANAA8AAAAtAA0AAAANAA8AAAAuAAkAAAAPAA8AAAAuAAoAAAAMAA8AAAAuAAsAAAAMAA8AAAAuAAwAAAAMAA8AAAAuAA0AAAAMAA8AAAAvAAkAAAAPAA8AAAAvAAoAAAAMAA8AAAAvAAsAAAAMAA8AAAAvAAwAAAAMAA8AAAAvAA0AAAAMAA8AAAAwAAkAAAAPAA8AAAAwAAoAAAAMAA8AAAAwAAsAAAAMAA8AAAAwAAwAAAAMAA8AAAAwAA0AAAAMAA8AAAAxAAkAAAAPAA8AAAAxAAoAAAAMAA8AAAAxAAsAAAAMAA8AAAAxAAwAAAAMAA8AAAAxAA0AAAAMAA8AAAAyAAkAAAAPAA8AAAAyAAoAAAAMAA8AAAAyAAsAAAAMAA8AAAAyAAwAAAAMAA8AAAAyAA0AAAAMAA8AAAAzAAkAAAAPAA8AAAAzAAoAAAAMAA8AAAAzAAsAAAAMAA8AAAAzAAwAAAAMAA8AAAAzAA0AAAAMAA8AAAA0AAkAAAAPAA8AAAA0AAoAAAAMAA8AAAA0AAsAAAAMAA8AAAA0AAwAAAAMAA8AAAA0AA0AAAAMAA8AAAA1AAkAAAAPAA8AAAA1AAoAAAAMAA8AAAA1AAsAAAAMAA8AAAA1AAwAAAAMAA8AAAA1AA0AAAAMAA8AAAA2AAkAAAAPAA8AAAA2AAoAAAAMAA8AAAA2AAsAAAAMAA8AAAA2AAwAAAAMAA8AAAA2AA0AAAAMAA8AAAA3AAkAAAAPAA8AAAA3AAoAAAAMAA8AAAA3AAsAAAAMAA8AAAA3AAwAAAAMAA8AAAA3AA0AAAAMAA8AAAA4AAkAAAARAA8AAAA4AAoAAAAOAA8AAAA4AAsAAAAOAA8AAAA4AAwAAAAOAA8AAAA4AA0AAAAOAA8AAAA=")
+tile_set = ExtResource("4_xfsn8")
+
+[node name="Sky" type="Parallax2D" parent="Level" unique_id=668982118]
+z_index = -12
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Sky" unique_id=625572792]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_40tso")
+
+[node name="Background1" type="Parallax2D" parent="Level" unique_id=1079394880]
+z_index = -10
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background1" unique_id=707851131]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_6adao")
+
+[node name="Background2" type="Parallax2D" parent="Level" unique_id=1516286870]
+z_index = -9
+scroll_scale = Vector2(0.45, 0.45)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background2" unique_id=1842139142]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_xfsn8")
+
+[node name="Trap1" type="StaticBody2D" parent="Level" unique_id=1930518021 groups=["Traps"] instance=ExtResource("8_k1xo5")]
+position = Vector2(864, 544)
+collision_layer = 9
+collision_mask = 2
+
+[node name="TrapBlade1" type="StaticBody2D" parent="Level" unique_id=1990603296 groups=["Traps"] instance=ExtResource("9_275aq")]
+position = Vector2(1120, 512)
+collision_layer = 9
+collision_mask = 2
+script = ExtResource("11_d7ihf")
+
+[node name="TrapLava1" type="Node2D" parent="Level" unique_id=2077279743 instance=ExtResource("10_mwcd1")]
+position = Vector2(1984, 544)
+script = ExtResource("13_x1c0p")
+
+[node name="Trap2" type="Node2D" parent="Level" unique_id=1894763376 instance=ExtResource("11_t8tp1")]
+position = Vector2(2272, 512)
+
+[node name="MovingPlatform1" type="AnimatableBody2D" parent="Level" unique_id=1610161131 instance=ExtResource("12_qreld")]
+position = Vector2(1248, 608)
+collision_mask = 0
+script = ExtResource("13_ypb6j")
+offset = Vector2(512, 0)
+
+[node name="JumpBoard1" type="Area2D" parent="Level" unique_id=1426289003 instance=ExtResource("14_dtc5s")]
+position = Vector2(2464, 544)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("15_q72fv")
+
+[node name="PortalA" type="Area2D" parent="Level" unique_id=713635795 instance=ExtResource("16_xtuen")]
+modulate = Color(0.35, 0.75, 1, 1)
+position = Vector2(2528, 544)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_1usoa")
+linked_portal_path = NodePath("../PortalB")
+
+[node name="PortalB" type="Area2D" parent="Level" unique_id=719823275 instance=ExtResource("16_xtuen")]
+modulate = Color(1, 0.55, 0.25, 1)
+position = Vector2(2912, 544)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_1usoa")
+linked_portal_path = NodePath("../PortalA")
+
+[node name="KillZone" type="Area2D" parent="Level" unique_id=1787850264 instance=ExtResource("21_k1xo5")]
+position = Vector2(3000, 1400)
+collision_mask = 2
+script = ExtResource("22_275aq")
+
+[node name="Player2" type="CharacterBody2D" parent="." unique_id=2106209264 groups=["Player"] instance=ExtResource("18_o1fe5")]
+position = Vector2(100, 257)
+rotation = 0.00042652956
+collision_layer = 2
+script = ExtResource("19_ednak")
+bullet_scene = ExtResource("20_3443q")
+bomb_projectile_scene = ExtResource("21_wrma8")
+
+[node name="Coins" type="Node2D" parent="." unique_id=1706315577]
+z_index = 2
+
+[node name="ShieldPickup1" type="Area2D" parent="Coins" unique_id=1013661644 instance=ExtResource("22_3078y")]
+position = Vector2(288, 480)
+collision_mask = 2
+script = ExtResource("23_vb1u5")
+
+[node name="ShieldPickup2" type="Area2D" parent="Coins" unique_id=827941435 instance=ExtResource("22_3078y")]
+position = Vector2(2496, 224)
+collision_mask = 2
+script = ExtResource("23_vb1u5")
+
+[node name="HealPotion" type="Area2D" parent="Coins" unique_id=242563240 instance=ExtResource("24_gg788")]
+position = Vector2(1888, 512)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("25_a6oxl")
+
+[node name="Coin14" type="Area2D" parent="Coins" unique_id=251510796 instance=ExtResource("26_mj3ph")]
+position = Vector2(928, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin15" type="Area2D" parent="Coins" unique_id=1223585780 instance=ExtResource("26_mj3ph")]
+position = Vector2(992, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin16" type="Area2D" parent="Coins" unique_id=610596751 instance=ExtResource("26_mj3ph")]
+position = Vector2(1056, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin22" type="Area2D" parent="Coins" unique_id=876143862 instance=ExtResource("26_mj3ph")]
+position = Vector2(1440, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin24" type="Area2D" parent="Coins" unique_id=495634999 instance=ExtResource("26_mj3ph")]
+position = Vector2(1568, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin26" type="Area2D" parent="Coins" unique_id=199290659 instance=ExtResource("26_mj3ph")]
+position = Vector2(1696, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin48" type="Area2D" parent="Coins" unique_id=1160682503 instance=ExtResource("26_mj3ph")]
+position = Vector2(3104, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Coin52" type="Area2D" parent="Coins" unique_id=1885938499 instance=ExtResource("26_mj3ph")]
+position = Vector2(3360, 512)
+collision_mask = 3
+script = ExtResource("27_fpluf")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=174689743]
+
+[node name="Enemy1" type="CharacterBody2D" parent="Enemies" unique_id=600502477 groups=["Enemy"] instance=ExtResource("28_ynvip")]
+position = Vector2(800, 512)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("29_dfrm1")
+
+[node name="Enemy2" type="CharacterBody2D" parent="Enemies" unique_id=1332437187 groups=["Enemy"] instance=ExtResource("31_l5akh")]
+position = Vector2(1184, 512)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("29_dfrm1")
+
+[node name="Enemy3" type="CharacterBody2D" parent="Enemies" unique_id=1290652301 groups=["Enemy"] instance=ExtResource("31_2atg1")]
+position = Vector2(1952, 512)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("29_dfrm1")
+
+[node name="Enemy4" type="CharacterBody2D" parent="Enemies" unique_id=661828056 groups=["Enemy"] instance=ExtResource("28_ynvip")]
+position = Vector2(2400, 512)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("29_dfrm1")
+
+[node name="Enemy5" type="CharacterBody2D" parent="Enemies" unique_id=1828249538 groups=["Enemy"] instance=ExtResource("31_2atg1")]
+position = Vector2(3104, 512)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("29_dfrm1")
+
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1799764374 instance=ExtResource("32_0phub")]
+script = ExtResource("33_alga1")
+
+[node name="Label" type="Label" parent="UserInterface" unique_id=1789408240]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -39.5
+offset_right = 99.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("34_868mf")
+theme_override_colors/font_color = Color(0.5529412, 0.38431373, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
 text = "Level 3"
+horizontal_alignment = 1
+
+[node name="Text" type="Node2D" parent="." unique_id=806974195]
+
+[node name="@Label@7" type="Label" parent="Text" unique_id=2071488414]
+offset_left = 150.0
+offset_top = 250.0
+offset_right = 150.0
+offset_bottom = 250.0
+theme = ExtResource("34_868mf")
+text = "โล่ (Shield) กันดาเมจชั่วคราว"
+
+[node name="@Label@8" type="Label" parent="Text" unique_id=2106015539]
+offset_left = 2450.0
+offset_top = 100.0
+offset_right = 2450.0
+offset_bottom = 100.0
+theme = ExtResource("34_868mf")
+text = "แท่นกระโดด (JumpBoard) เด้งขึ้นที่สูง"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1457132609]
+stream = ExtResource("35_8ftg7")
+bus = &"music"
+
+[connection signal="hit_enemy" from="Player2" to="." method="_on_player_hit_enemy"]
+[connection signal="hit_trap" from="Player2" to="." method="_on_player_hit_trap"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

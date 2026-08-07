@@ -12,8 +12,8 @@ func _ready() -> void:
 	$UserInterface/Label.queue_free()
 
 
-func _on_player_hit_enemy() -> void:
-	GameManager.damage(5)	
+func _on_player_hit_enemy(damage: int) -> void:
+	GameManager.damage(damage)
 
 func _on_player_hit_trap() -> void:
 	GameManager.damage(20)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjetpackpickup1"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/jetpack_pickup.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jp1"]
+radius = 20.0
+
+[node name="JetpackPickup" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jp1")
+
+[node name="Strap" type="Polygon2D" parent="."]
+color = Color(0.2, 0.2, 0.22, 1)
+polygon = PackedVector2Array(-17, -16, 17, -16, 17, -10, -17, -10)
+
+[node name="TankLeft" type="Polygon2D" parent="."]
+color = Color(0.35, 0.37, 0.4, 1)
+polygon = PackedVector2Array(-17, -14, -1, -14, -1, 14, -17, 14)
+
+[node name="TankRight" type="Polygon2D" parent="."]
+color = Color(0.35, 0.37, 0.4, 1)
+polygon = PackedVector2Array(1, -14, 17, -14, 17, 14, 1, 14)
+
+[node name="Flame" type="Polygon2D" parent="."]
+color = Color(1, 0.65, 0.15, 1)
+polygon = PackedVector2Array(-6, 14, 6, 14, 0, 26)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

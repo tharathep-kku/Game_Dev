@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmp1a2b3c4d5e"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/moving_platform.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://o4gihvmaqwg7" path="res://Assets/Kenney/Objects/block_plank.png" id="2_plank"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp1"]
+size = Vector2(128, 32)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+collision_layer = 1
+collision_mask = 0
+sync_to_physics = true
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mp1")
+
+[node name="PlankLeft" type="Sprite2D" parent="."]
+position = Vector2(-32, 0)
+texture = ExtResource("2_plank")
+
+[node name="PlankRight" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("2_plank")

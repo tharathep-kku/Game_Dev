@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d27bcsmx82vfa"]
 
 [ext_resource type="Script" uid="uid://cqthh7s5qpuw3" path="res://Scenes/Actors/enemy.gd" id="1_7cwx2"]
-[ext_resource type="AudioStream" uid="uid://wg4mya74ni6n" path="res://Assets/Sound/FX/explosion.wav" id="2_5n1qu"]
+[ext_resource type="AudioStream" uid="uid://bum7vqc6c7vfp" path="res://Assets/Sound/FX/zombie_growl.mp3" id="2_5n1qu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21vrd"]
 radius = 17.0

@@ -1,9 +1,14 @@
 class_name Enemy
 extends CharacterBody2D
+
 @export var speed = 100.0
 @export var direction = 1
 @export var flip = false
+@export var max_hp := 20
+@export var contact_damage := 5
+@export var score_value := 1
 
+var hp : int
 var alive = true
 @onready var wall_ray: RayCast2D = $Sprite/Ray/wallRay
 @onready var player_ray: RayCast2D = $Sprite/Ray/playerRay
@@ -11,6 +16,7 @@ var alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hp = max_hp
 	$DeathParticles.one_shot = true
 	if direction>0 : direction = 1
 	if direction<0 : direction = -1
@@ -46,13 +52,20 @@ func _on_hit_area_body_entered(body: Node2D) -> void:
 	if alive and body.is_in_group("Traps"):
 		death_tween()
 	if alive and body.is_in_group("Bullet"):
-		GameManager.add_score()
-		death_tween()
+		take_damage(body.get("damage") if body.get("damage") != null else 10)
 		body.queue_free()
-		
+
+func take_damage(amount: int) -> void:
+	if not alive:
+		return
+	hp -= amount
+	if hp <= 0:
+		death_tween()
+
 func death_tween():
 	alive = false
 	collision_layer = 0
+	GameManager.register_kill(score_value)
 	$Sprite.hide()
 	$DeathParticles.emitting = true
 	$DeathSfx.play()

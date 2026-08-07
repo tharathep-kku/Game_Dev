@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8k4n0q7blade1"]
+
+[ext_resource type="Texture2D" uid="uid://clyisenph24fp" path="res://Assets/Kenney/Tiles/saw.png" id="1_saw"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/trap_blade.gd" id="2_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blade1"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_warning"]
+radius = 56.0
+
+[sub_resource type="Animation" id="Animation_blade_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_blade_spin"]
+resource_name = "spin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blade1"]
+_data = {
+&"RESET": SubResource("Animation_blade_reset"),
+&"spin": SubResource("Animation_blade_spin")
+}
+
+[node name="TrapBlade" type="StaticBody2D" groups=["Traps"]]
+collision_layer = 9
+collision_mask = 2
+script = ExtResource("2_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_blade1")
+
+[node name="WarningZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="WarningShape" type="CollisionShape2D" parent="WarningZone"]
+shape = SubResource("CircleShape2D_warning")
+
+[node name="Saw" type="Sprite2D" parent="."]
+texture = ExtResource("1_saw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_blade1")
+}
+autoplay = "spin"

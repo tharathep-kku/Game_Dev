@@ -29,7 +29,7 @@ repeat_size = Vector2(1152, 0)
 repeat_times = 2
 
 [node name="Player2" parent="." unique_id=2106209264 instance=ExtResource("7_3b8rg")]
-position = Vector2(100, 257)
+position = Vector2(353, 272.99997)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Coins" type="Node2D" parent="." unique_id=1530662565]

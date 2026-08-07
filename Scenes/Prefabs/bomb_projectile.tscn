@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbombproj01a2b"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/bomb_projectile.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://3l6vbphi3xiv" path="res://Assets/Kenney/Items/bomb_active.png" id="2_bomb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp1"]
+radius = 14.0
+
+[node name="BombProjectile" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_bomb")
