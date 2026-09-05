@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bua72j4sdqo8o"]
+
+[resource]
+resource_name = "Pants"
+albedo_color = Color(0.24417196, 0.22756705, 0.22756705, 1)
+metallic = 0.4
+roughness = 0.4150871
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}

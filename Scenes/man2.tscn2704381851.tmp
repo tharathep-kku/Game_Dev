@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cx3ku4cgmeald"]
+
+[ext_resource type="PackedScene" uid="uid://c8l1cjhb02sre" path="res://Assets/Models/Man/Man.glb" id="1_dxven"]
+[ext_resource type="Script" uid="uid://1ja58oi1dyq" path="res://Scripts/player2.gd" id="2_bv0xh"]
+[ext_resource type="Script" uid="uid://do78u66fs5iqf" path="res://Scripts/CameraMovement.gd" id="3_k5d31"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5d31"]
+margin = 0.0
+radius = 0.63
+height = 5.034
+
+[node name="Node3D" type="Node3D" unique_id=792702100]
+
+[node name="Man" parent="." unique_id=963149959 instance=ExtResource("1_dxven")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007387176, 0, -0.0046952963)
+script = ExtResource("2_bv0xh")
+move_speed = null
+jump_force = null
+follow_lerp_factor = null
+jump_limit = null
+jumpStretchSize = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Man" unique_id=1194418188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3467374, 0.124438405)
+shape = SubResource("CapsuleShape3D_k5d31")
+
+[node name="Gimbal" type="Node3D" parent="." unique_id=941894388]
+unique_name_in_owner = true
+script = ExtResource("3_k5d31")
+
+[node name="Camera3D" type="Camera3D" parent="Gimbal" unique_id=1155310342]
+transform = Transform3D(-0.9994718, -0.017705021, 0.027253112, -0.008175272, 0.94858086, 0.31642962, -0.03145417, 0.31603968, -0.94822466, -0.007386729, 4.9631386, -5.492494)

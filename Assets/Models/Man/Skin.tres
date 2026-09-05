@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://co7wt2x1vm7rv"]
+
+[resource]
+resource_name = "Skin"
+albedo_color = Color(0.6633345, 0.5418334, 0.40007535, 1)
+metallic = 0.4
+roughness = 0.4150871
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}
