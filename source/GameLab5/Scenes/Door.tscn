@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq1r8k3wj4t2m"]
+
+[ext_resource type="PackedScene" uid="uid://bl5lrrecsh57e" path="res://Assets/Models/flag.glb" id="1_door0"]
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="2_door0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door0"]
+size = Vector3(2, 4, 2)
+
+[node name="Door" type="Area3D" groups=["Door"]]
+script = ExtResource("2_door0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_door0")
+
+[node name="Flag" parent="." instance=ExtResource("1_door0")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
