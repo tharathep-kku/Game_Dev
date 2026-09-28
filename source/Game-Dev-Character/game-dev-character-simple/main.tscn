@@ -1,0 +1,360 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Idle.fbx" id="thana_fbx"]
+[ext_resource type="Script" path="res://thana.gd" id="thana_gd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 3
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="floor_mat"]
+albedo_color = Color(0.35, 0.4, 0.38, 1)
+
+[sub_resource type="StandardMaterial3D" id="wall_mat"]
+albedo_color = Color(0.85, 0.82, 0.7, 1)
+
+[sub_resource type="StandardMaterial3D" id="desk_mat"]
+albedo_color = Color(0.6, 0.45, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="black_mat"]
+albedo_color = Color(0.05, 0.05, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="screen_mat"]
+albedo_color = Color(0.3, 0.7, 1, 1)
+emission_enabled = true
+emission = Color(0.3, 0.7, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="window_mat"]
+albedo_color = Color(0.6, 0.85, 1, 1)
+emission_enabled = true
+emission = Color(0.4, 0.6, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="green_mat"]
+albedo_color = Color(0.2, 0.6, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="pot_mat"]
+albedo_color = Color(0.6, 0.3, 0.15, 1)
+
+[sub_resource type="StandardMaterial3D" id="pants_mat"]
+albedo_color = Color(0.15, 0.15, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="pink_mat"]
+albedo_color = Color(0.95, 0.5, 0.65, 1)
+
+[sub_resource type="StandardMaterial3D" id="blue_mat"]
+albedo_color = Color(0.5, 0.7, 0.95, 1)
+
+[sub_resource type="StandardMaterial3D" id="skin_mat"]
+albedo_color = Color(0.85, 0.65, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="red_mat"]
+albedo_color = Color(0.8, 0.1, 0.1, 1)
+
+[sub_resource type="PlaneMesh" id="floor_mesh"]
+material = SubResource("floor_mat")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxMesh" id="wall_mesh"]
+material = SubResource("wall_mat")
+size = Vector3(10, 3, 0.2)
+
+[sub_resource type="BoxMesh" id="window_mesh"]
+material = SubResource("window_mat")
+size = Vector3(2.5, 1.2, 0.05)
+
+[sub_resource type="BoxMesh" id="desk_mesh"]
+material = SubResource("desk_mat")
+size = Vector3(1.2, 1.1, 0.6)
+
+[sub_resource type="BoxMesh" id="monitor_mesh"]
+material = SubResource("black_mat")
+size = Vector3(0.5, 0.35, 0.05)
+
+[sub_resource type="BoxMesh" id="screen_mesh"]
+material = SubResource("screen_mat")
+size = Vector3(0.44, 0.29, 0.01)
+
+[sub_resource type="CylinderMesh" id="pot_mesh"]
+material = SubResource("pot_mat")
+top_radius = 0.25
+bottom_radius = 0.18
+height = 0.45
+
+[sub_resource type="SphereMesh" id="bush_mesh"]
+material = SubResource("green_mat")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="BoxMesh" id="leg_mesh"]
+material = SubResource("pants_mat")
+size = Vector3(0.14, 0.8, 0.14)
+
+[sub_resource type="CapsuleMesh" id="pim_body"]
+material = SubResource("pink_mat")
+radius = 0.24
+height = 0.85
+
+[sub_resource type="CapsuleMesh" id="ton_body"]
+material = SubResource("blue_mat")
+radius = 0.24
+height = 0.85
+
+[sub_resource type="BoxMesh" id="pim_arm"]
+material = SubResource("pink_mat")
+size = Vector3(0.1, 0.55, 0.1)
+
+[sub_resource type="BoxMesh" id="ton_arm"]
+material = SubResource("blue_mat")
+size = Vector3(0.1, 0.55, 0.1)
+
+[sub_resource type="SphereMesh" id="head_mesh"]
+material = SubResource("skin_mat")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="hair_mesh"]
+material = SubResource("black_mat")
+radius = 0.215
+height = 0.43
+
+[sub_resource type="BoxMesh" id="spiky_hair"]
+material = SubResource("black_mat")
+size = Vector3(0.3, 0.12, 0.3)
+
+[sub_resource type="SphereMesh" id="eye_mesh"]
+material = SubResource("black_mat")
+radius = 0.035
+height = 0.07
+
+[sub_resource type="BoxMesh" id="mouth_mesh"]
+material = SubResource("red_mat")
+size = Vector3(0.14, 0.03, 0.02)
+
+[sub_resource type="Animation" id="pim_typing"]
+resource_name = "typing"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Upper/ArmL:rotation")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 0), Vector3(-0.8, 0, 0), Vector3(-1, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Upper/ArmR:rotation")
+tracks/1/interp = 1
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.8, 0, 0), Vector3(-1, 0, 0), Vector3(-0.8, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Upper/Head:rotation")
+tracks/2/interp = 1
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.25, 0, 0), Vector3(0.35, 0, 0), Vector3(0.25, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="pim_lib"]
+_data = {
+&"typing": SubResource("pim_typing")
+}
+
+[sub_resource type="Animation" id="ton_bow"]
+resource_name = "bow"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Upper:rotation")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.7, 0, 0), Vector3(0.7, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="ton_lib"]
+_data = {
+&"bow": SubResource("ton_bow")
+}
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, 0.5, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 1.6, 4.5)
+rotation = Vector3(-0.12, 0, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("floor_mesh")
+
+[node name="BackWall" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.5, -3)
+mesh = SubResource("wall_mesh")
+
+[node name="Window" type="MeshInstance3D" parent="BackWall"]
+position = Vector3(2, 0.2, 0.11)
+mesh = SubResource("window_mesh")
+
+[node name="Plant" type="MeshInstance3D" parent="."]
+position = Vector3(-4, 0.225, -2.4)
+mesh = SubResource("pot_mesh")
+
+[node name="Bush" type="MeshInstance3D" parent="Plant"]
+position = Vector3(0, 0.55, 0)
+mesh = SubResource("bush_mesh")
+
+[node name="Thana" parent="." instance=ExtResource("thana_fbx")]
+script = ExtResource("thana_gd")
+
+[node name="Desk" type="MeshInstance3D" parent="."]
+position = Vector3(-2.2, 0.55, 0.3)
+mesh = SubResource("desk_mesh")
+
+[node name="Monitor" type="MeshInstance3D" parent="Desk"]
+position = Vector3(0, 0.75, -0.1)
+mesh = SubResource("monitor_mesh")
+
+[node name="Screen" type="MeshInstance3D" parent="Desk/Monitor"]
+position = Vector3(0, 0, -0.031)
+mesh = SubResource("screen_mesh")
+
+[node name="Pim" type="Node3D" parent="."]
+position = Vector3(-2.2, 0, -0.4)
+
+[node name="LegL" type="MeshInstance3D" parent="Pim"]
+position = Vector3(-0.1, 0.4, 0)
+mesh = SubResource("leg_mesh")
+
+[node name="LegR" type="MeshInstance3D" parent="Pim"]
+position = Vector3(0.1, 0.4, 0)
+mesh = SubResource("leg_mesh")
+
+[node name="Upper" type="Node3D" parent="Pim"]
+position = Vector3(0, 0.8, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Pim/Upper"]
+position = Vector3(0, 0.4, 0)
+mesh = SubResource("pim_body")
+
+[node name="Head" type="MeshInstance3D" parent="Pim/Upper"]
+position = Vector3(0, 1, 0)
+mesh = SubResource("head_mesh")
+
+[node name="Hair" type="MeshInstance3D" parent="Pim/Upper/Head"]
+position = Vector3(0, 0.04, -0.04)
+mesh = SubResource("hair_mesh")
+
+[node name="EyeL" type="MeshInstance3D" parent="Pim/Upper/Head"]
+position = Vector3(-0.07, 0.02, 0.17)
+mesh = SubResource("eye_mesh")
+
+[node name="EyeR" type="MeshInstance3D" parent="Pim/Upper/Head"]
+position = Vector3(0.07, 0.02, 0.17)
+mesh = SubResource("eye_mesh")
+
+[node name="Mouth" type="MeshInstance3D" parent="Pim/Upper/Head"]
+position = Vector3(0, -0.08, 0.18)
+mesh = SubResource("mouth_mesh")
+
+[node name="ArmL" type="Node3D" parent="Pim/Upper"]
+position = Vector3(-0.3, 0.7, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Pim/Upper/ArmL"]
+position = Vector3(0, -0.27, 0)
+mesh = SubResource("pim_arm")
+
+[node name="ArmR" type="Node3D" parent="Pim/Upper"]
+position = Vector3(0.3, 0.7, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Pim/Upper/ArmR"]
+position = Vector3(0, -0.27, 0)
+mesh = SubResource("pim_arm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pim"]
+libraries = {
+&"": SubResource("pim_lib")
+}
+autoplay = "typing"
+
+[node name="Ton" type="Node3D" parent="."]
+position = Vector3(2.2, 0, -0.4)
+
+[node name="LegL" type="MeshInstance3D" parent="Ton"]
+position = Vector3(-0.1, 0.4, 0)
+mesh = SubResource("leg_mesh")
+
+[node name="LegR" type="MeshInstance3D" parent="Ton"]
+position = Vector3(0.1, 0.4, 0)
+mesh = SubResource("leg_mesh")
+
+[node name="Upper" type="Node3D" parent="Ton"]
+position = Vector3(0, 0.8, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Ton/Upper"]
+position = Vector3(0, 0.4, 0)
+mesh = SubResource("ton_body")
+
+[node name="Head" type="MeshInstance3D" parent="Ton/Upper"]
+position = Vector3(0, 1, 0)
+mesh = SubResource("head_mesh")
+
+[node name="Hair" type="MeshInstance3D" parent="Ton/Upper/Head"]
+position = Vector3(0, 0.18, 0)
+rotation = Vector3(0.2, 0.4, 0.1)
+mesh = SubResource("spiky_hair")
+
+[node name="EyeL" type="MeshInstance3D" parent="Ton/Upper/Head"]
+position = Vector3(-0.07, 0.02, 0.17)
+mesh = SubResource("eye_mesh")
+
+[node name="EyeR" type="MeshInstance3D" parent="Ton/Upper/Head"]
+position = Vector3(0.07, 0.02, 0.17)
+mesh = SubResource("eye_mesh")
+
+[node name="Mouth" type="MeshInstance3D" parent="Ton/Upper/Head"]
+position = Vector3(0, -0.08, 0.18)
+mesh = SubResource("mouth_mesh")
+
+[node name="ArmL" type="Node3D" parent="Ton/Upper"]
+position = Vector3(-0.3, 0.7, 0)
+rotation = Vector3(-0.3, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ton/Upper/ArmL"]
+position = Vector3(0, -0.27, 0)
+mesh = SubResource("ton_arm")
+
+[node name="ArmR" type="Node3D" parent="Ton/Upper"]
+position = Vector3(0.3, 0.7, 0)
+rotation = Vector3(-0.3, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ton/Upper/ArmR"]
+position = Vector3(0, -0.27, 0)
+mesh = SubResource("ton_arm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ton"]
+libraries = {
+&"": SubResource("ton_lib")
+}
+autoplay = "bow"
