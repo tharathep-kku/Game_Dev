@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://office/office.glb" id="2"]
+[ext_resource type="PackedScene" path="res://characters/thana.glb" id="3"]
+[ext_resource type="PackedScene" path="res://characters/pim.glb" id="4"]
+[ext_resource type="PackedScene" path="res://characters/ton.glb" id="5"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.01, 0.015, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.55, 0.6, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.03, 0.05, 0.06, 1)
+fog_density = 0.035
+
+[sub_resource type="CameraAttributesPractical" id="cam"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+
+[node name="PSXView" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="PSXView"]
+handle_input_locally = false
+msaa_3d = 0
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="World" type="Node3D" parent="PSXView/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="PSXView/SubViewport/World"]
+environment = SubResource("env")
+camera_attributes = SubResource("cam")
+
+[node name="Camera3D" type="Camera3D" parent="PSXView/SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 0.9563, 0.2924, 0, -0.2924, 0.9563, 0, 2.1, 4.6)
+fov = 62.0
+
+[node name="Office" parent="PSXView/SubViewport/World" groups=["psx"] instance=ExtResource("2")]
+
+[node name="Thana" parent="PSXView/SubViewport/World" groups=["psx"] instance=ExtResource("3")]
+unique_name_in_owner = true
+
+[node name="Pim" parent="PSXView/SubViewport/World" groups=["psx"] instance=ExtResource("4")]
+unique_name_in_owner = true
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -4.3, 0, -1.5)
+
+[node name="Ton" parent="PSXView/SubViewport/World" groups=["psx"] instance=ExtResource("5")]
+unique_name_in_owner = true
+transform = Transform3D(0.788, 0, -0.616, 0, 1, 0, 0.616, 0, 0.788, 4.3, 0, -0.9)
+
+[node name="FlickerLight" type="OmniLight3D" parent="PSXView/SubViewport/World"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.8, -0.5)
+light_color = Color(0.85, 1, 0.9, 1)
+light_energy = 1.3
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="Light2" type="OmniLight3D" parent="PSXView/SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.8, -0.5)
+light_color = Color(0.85, 1, 0.9, 1)
+light_energy = 1.3
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="Light3" type="OmniLight3D" parent="PSXView/SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.8, -3.5)
+light_color = Color(0.85, 1, 0.9, 1)
+omni_range = 5.0
+
+[node name="Light4" type="OmniLight3D" parent="PSXView/SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.8, -3.5)
+light_color = Color(0.85, 1, 0.9, 1)
+omni_range = 5.0
+
+[node name="PimScreenGlow" type="OmniLight3D" parent="PSXView/SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.1, -1.5)
+light_color = Color(0.3, 0.6, 1, 1)
+light_energy = 1.5
+omni_range = 1.8

@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# local tools / unused third-party
+*.exe
+Godot4-OpenAnimationLibraries-main/
