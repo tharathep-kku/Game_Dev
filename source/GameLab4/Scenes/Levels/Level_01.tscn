@@ -1,0 +1,249 @@
+[gd_scene format=4 uid="uid://budnxjdanry14"]
+
+[ext_resource type="Script" uid="uid://cwm5w1bxx3js3" path="res://Scenes/Levels/base_level.gd" id="1_3rng7"]
+[ext_resource type="PackedScene" uid="uid://cyti38f0lagf2" path="res://Scenes/Prefabs/level_finish_door.tscn" id="2_nejni"]
+[ext_resource type="PackedScene" uid="uid://ce73to47h0qi0" path="res://Scenes/Levels/Level_02.tscn" id="4_7ylor"]
+[ext_resource type="TileSet" uid="uid://dk4qcax1suy2c" path="res://Scenes/Prefabs/zombie_tile_set.tres" id="5_uxpwa"]
+[ext_resource type="Texture2D" uid="uid://cptmpjo7ss0wj" path="res://Assets/Backgrounds/Postapocalypse1/clouds1.png" id="6_p8uat"]
+[ext_resource type="Texture2D" uid="uid://bg65vo7swbktg" path="res://Assets/Backgrounds/Postapocalypse1/ground_houses_bg.png" id="7_n34mk"]
+[ext_resource type="Texture2D" uid="uid://bc3i0l4a8d47x" path="res://Assets/Backgrounds/Postapocalypse1/ground_houses.png" id="8_poi3m"]
+[ext_resource type="PackedScene" uid="uid://cb8e62red7kc0" path="res://Scenes/Prefabs/trap_1.tscn" id="9_ltxxm"]
+[ext_resource type="PackedScene" uid="uid://bp4l1nlnh8oq1" path="res://Scenes/Prefabs/trap_2.tscn" id="10_1kvea"]
+[ext_resource type="PackedScene" uid="uid://3i1obbqv0lo5" path="res://Scenes/Prefabs/trap_blade.tscn" id="11_00hle"]
+[ext_resource type="PackedScene" uid="uid://c4s0lvvam7e0s" path="res://Scenes/Prefabs/trap_lava.tscn" id="13_aiont"]
+[ext_resource type="PackedScene" uid="uid://bmp1a2b3c4d5e" path="res://Scenes/Prefabs/moving_platform.tscn" id="15_6yct6"]
+[ext_resource type="PackedScene" uid="uid://bjb01a2b3c4d5" path="res://Scenes/Prefabs/jump_board.tscn" id="17_obxcw"]
+[ext_resource type="PackedScene" uid="uid://belev01a2b3c4" path="res://Scenes/Prefabs/elevator.tscn" id="19_yogpb"]
+[ext_resource type="PackedScene" uid="uid://dkill0one001a" path="res://Scenes/Prefabs/kill_zone.tscn" id="21_tpl7f"]
+[ext_resource type="PackedScene" uid="uid://douri0f526muw" path="res://Scenes/Actors/player2.tscn" id="23_7ar4h"]
+[ext_resource type="PackedScene" uid="uid://dabag2r57aued" path="res://Scenes/Prefabs/heal_potion.tscn" id="27_m4fol"]
+[ext_resource type="PackedScene" uid="uid://vxhey2brv47e" path="res://Scenes/Prefabs/bomb_pickup.tscn" id="29_7irkx"]
+[ext_resource type="PackedScene" uid="uid://bh44lslpc1y61" path="res://Scenes/Prefabs/shield_pickup.tscn" id="31_vsexs"]
+[ext_resource type="PackedScene" uid="uid://bfmh3fm2de78o" path="res://Scenes/Prefabs/Coin.tscn" id="33_txf5p"]
+[ext_resource type="PackedScene" uid="uid://bb11am1mk0iuh" path="res://Scenes/Actors/monster_mushroom1.tscn" id="35_qyqnr"]
+[ext_resource type="PackedScene" uid="uid://b7c8maoe37ao7" path="res://Scenes/Actors/monster_mushroom2.tscn" id="37_iofu0"]
+[ext_resource type="PackedScene" uid="uid://cdwabmqtlxr1y" path="res://Scenes/Levels/game_ui.tscn" id="38_h837b"]
+[ext_resource type="Theme" uid="uid://d3eng5cvycmjf" path="res://Scenes/Prefabs/theme.tres" id="40_fsvlw"]
+[ext_resource type="AudioStream" uid="uid://dhmn57nc23ah1" path="res://Assets/Sound/walen.ogg" id="41_mu2dj"]
+
+[node name="Level_01" type="Node2D" unique_id=399130599]
+script = ExtResource("1_3rng7")
+
+[node name="LevelFinishDoor" parent="." unique_id=1136132539 instance=ExtResource("2_nejni")]
+z_index = 1
+position = Vector2(3935, 276)
+next_scene = ExtResource("4_7ylor")
+
+[node name="Level" type="Node2D" parent="." unique_id=464396408]
+
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=1410266835]
+tile_map_data = PackedByteArray("AAAAAAkAAAAPAA8AAAAAAAoAAAAMAA8AAAAAAAsAAAAMAA8AAAAAAAwAAAAMAA8AAAAAAA0AAAAMAA8AAAABAAkAAAAPAA8AAAABAAoAAAAMAA8AAAABAAsAAAAMAA8AAAABAAwAAAAMAA8AAAABAA0AAAAMAA8AAAACAAkAAAAPAA8AAAACAAoAAAAMAA8AAAACAAsAAAAMAA8AAAACAAwAAAAMAA8AAAACAA0AAAAMAA8AAAADAAkAAAAPAA8AAAADAAoAAAAMAA8AAAADAAsAAAAMAA8AAAADAAwAAAAMAA8AAAADAA0AAAAMAA8AAAAEAAkAAAAPAA8AAAAEAAoAAAAMAA8AAAAEAAsAAAAMAA8AAAAEAAwAAAAMAA8AAAAEAA0AAAAMAA8AAAAFAAkAAAAPAA8AAAAFAAoAAAAMAA8AAAAFAAsAAAAMAA8AAAAFAAwAAAAMAA8AAAAFAA0AAAAMAA8AAAAGAAkAAAAPAA8AAAAGAAoAAAAMAA8AAAAGAAsAAAAMAA8AAAAGAAwAAAAMAA8AAAAGAA0AAAAMAA8AAAAHAAkAAAAPAA8AAAAHAAoAAAAMAA8AAAAHAAsAAAAMAA8AAAAHAAwAAAAMAA8AAAAHAA0AAAAMAA8AAAAIAAkAAAAPAA8AAAAIAAoAAAAMAA8AAAAIAAsAAAAMAA8AAAAIAAwAAAAMAA8AAAAIAA0AAAAMAA8AAAAJAAkAAAARAA8AAAAJAAoAAAAMAA8AAAAJAAsAAAAOAA8AAAAJAAwAAAAOAA8AAAAJAA0AAAAOAA8AAAANAAkAAAAQAA8AAAANAAoAAAAMAA8AAAANAAsAAAANAA8AAAANAAwAAAANAA8AAAANAA0AAAANAA8AAAAOAAkAAAAPAA8AAAAOAAoAAAAMAA8AAAAOAAsAAAAMAA8AAAAOAAwAAAAMAA8AAAAOAA0AAAAMAA8AAAAPAAkAAAAPAA8AAAAPAAoAAAAMAA8AAAAPAAsAAAAMAA8AAAAPAAwAAAAMAA8AAAAPAA0AAAAMAA8AAAAQAAkAAAAPAA8AAAAQAAoAAAAMAA8AAAAQAAsAAAAMAA8AAAAQAAwAAAAMAA8AAAAQAA0AAAAMAA8AAAARAAkAAAAPAA8AAAARAAoAAAAMAA8AAAARAAsAAAAMAA8AAAARAAwAAAAMAA8AAAARAA0AAAAMAA8AAAASAAkAAAAPAA8AAAASAAoAAAAMAA8AAAASAAsAAAAMAA8AAAASAAwAAAAMAA8AAAASAA0AAAAMAA8AAAATAAkAAAAPAA8AAAATAAoAAAAMAA8AAAATAAsAAAAMAA8AAAATAAwAAAAMAA8AAAATAA0AAAAMAA8AAAAUAAkAAAAPAA8AAAAUAAoAAAAMAA8AAAAUAAsAAAAMAA8AAAAUAAwAAAAMAA8AAAAUAA0AAAAMAA8AAAAVAAkAAAAPAA8AAAAVAAoAAAAMAA8AAAAVAAsAAAAMAA8AAAAVAAwAAAAMAA8AAAAVAA0AAAAMAA8AAAAWAAkAAAARAA8AAAAWAAoAAAAOAA8AAAAWAAsAAAAMAA8AAAAWAAwAAAAOAA8AAAAWAA0AAAAOAA8AAAAeAAkAAAAQAA8AAAAeAAoAAAANAA8AAAAeAAsAAAAMAA8AAAAeAAwAAAANAA8AAAAeAA0AAAANAA8AAAAfAAkAAAAPAA8AAAAfAAoAAAAMAA8AAAAfAAsAAAAMAA8AAAAfAAwAAAAMAA8AAAAfAA0AAAAMAA8AAAAgAAkAAAAPAA8AAAAgAAoAAAAMAA8AAAAgAAsAAAAMAA8AAAAgAAwAAAAMAA8AAAAgAA0AAAAMAA8AAAAhAAkAAAAPAA8AAAAhAAoAAAAMAA8AAAAhAAsAAAAMAA8AAAAhAAwAAAAMAA8AAAAhAA0AAAAMAA8AAAAiAAkAAAAPAA8AAAAiAAoAAAAMAA8AAAAiAAsAAAAMAA8AAAAiAAwAAAAMAA8AAAAiAA0AAAAMAA8AAAAjAAkAAAAPAA8AAAAjAAoAAAAMAA8AAAAjAAsAAAAMAA8AAAAjAAwAAAAMAA8AAAAjAA0AAAAMAA8AAAAkAAkAAAAPAA8AAAAkAAoAAAAMAA8AAAAkAAsAAAAMAA8AAAAkAAwAAAAMAA8AAAAkAA0AAAAMAA8AAAAlAAkAAAAPAA8AAAAlAAoAAAAMAA8AAAAlAAsAAAAMAA8AAAAlAAwAAAAMAA8AAAAlAA0AAAAMAA8AAAAmAAkAAAAPAA8AAAAmAAoAAAAMAA8AAAAmAAsAAAAMAA8AAAAmAAwAAAAMAA8AAAAmAA0AAAAMAA8AAAAnAAkAAAAPAA8AAAAnAAoAAAAMAA8AAAAnAAsAAAAMAA8AAAAnAAwAAAAMAA8AAAAnAA0AAAAMAA8AAAAoAAkAAAARAA8AAAAoAAoAAAAMAA8AAAAoAAsAAAAOAA8AAAAoAAwAAAAOAA8AAAAoAA0AAAAOAA8AAAAsAAkAAAAQAA8AAAAsAAoAAAAMAA8AAAAsAAsAAAANAA8AAAAsAAwAAAANAA8AAAAsAA0AAAANAA8AAAAtAAkAAAAPAA8AAAAtAAoAAAAMAA8AAAAtAAsAAAAMAA8AAAAtAAwAAAAMAA8AAAAtAA0AAAAMAA8AAAAuAAkAAAAPAA8AAAAuAAoAAAAMAA8AAAAuAAsAAAAMAA8AAAAuAAwAAAAMAA8AAAAuAA0AAAAMAA8AAAAvAAkAAAAPAA8AAAAvAAoAAAAMAA8AAAAvAAsAAAAMAA8AAAAvAAwAAAAMAA8AAAAvAA0AAAAMAA8AAAAwAAkAAAAPAA8AAAAwAAoAAAAMAA8AAAAwAAsAAAAMAA8AAAAwAAwAAAAMAA8AAAAwAA0AAAAMAA8AAAAxAAkAAAAPAA8AAAAxAAoAAAAMAA8AAAAxAAsAAAAMAA8AAAAxAAwAAAAMAA8AAAAxAA0AAAAMAA8AAAAyAAkAAAAPAA8AAAAyAAoAAAAMAA8AAAAyAAsAAAAMAA8AAAAyAAwAAAAMAA8AAAAyAA0AAAAMAA8AAAAzAAkAAAAPAA8AAAAzAAoAAAAMAA8AAAAzAAsAAAAMAA8AAAAzAAwAAAAMAA8AAAAzAA0AAAAMAA8AAAA0AAkAAAAPAA8AAAA0AAoAAAAMAA8AAAA0AAsAAAAMAA8AAAA0AAwAAAAMAA8AAAA0AA0AAAAMAA8AAAA1AAkAAAAPAA8AAAA1AAoAAAAMAA8AAAA1AAsAAAAMAA8AAAA1AAwAAAAMAA8AAAA1AA0AAAAMAA8AAAA2AAkAAAAPAA8AAAA2AAoAAAAMAA8AAAA2AAsAAAAMAA8AAAA2AAwAAAAMAA8AAAA2AA0AAAAMAA8AAAA3AAkAAAAPAA8AAAA3AAoAAAAMAA8AAAA3AAsAAAAMAA8AAAA3AAwAAAAMAA8AAAA3AA0AAAAMAA8AAAA4AAkAAAAPAA8AAAA4AAoAAAAMAA8AAAA4AAsAAAAMAA8AAAA4AAwAAAAMAA8AAAA4AA0AAAAMAA8AAAA5AAkAAAAPAA8AAAA5AAoAAAAMAA8AAAA5AAsAAAAMAA8AAAA5AAwAAAAMAA8AAAA5AA0AAAAMAA8AAAA6AAkAAAARAA8AAAA6AAoAAAAMAA8AAAA6AAsAAAAMAA8AAAA6AAwAAAAMAA8AAAA6AA0AAAAMAA8AAAAsAAMAAAACABAAAAAtAAMAAAADABAAAAAuAAMAAAAEABAAAAA8AAUAAAAQAA8AAAA8AAYAAAANAA8AAAA8AAcAAAANAA8AAAA9AAUAAAAPAA8AAAA9AAYAAAAMAA8AAAA9AAcAAAAMAA8AAAA+AAUAAAARAA8AAAA+AAYAAAAOAA8AAAA+AAcAAAAOAA8AAAD//wkAAAAPAA8AAAD+/wkAAAAPAA8AAAD9/wkAAAAPAA8AAAD8/wkAAAAPAA8AAAD7/wkAAAAPAA8AAAD//woAAAAMAA8AAAD+/woAAAAMAA8AAAD9/woAAAAMAA8AAAD9/wsAAAAMAA8AAAD//wsAAAAMAA8AAAD//wwAAAAMAA8AAAD+/wsAAAAMAA8AAAD9/wwAAAAMAA8AAAD+/wwAAAAMAA8AAAD//w0AAAAMAA8AAAD+/w0AAAAMAA8AAAD9/w0AAAAMAA8AAAD8/w0AAAAMAA8AAAD7/w0AAAAMAA8AAAD7/wwAAAAMAA8AAAD8/wwAAAAMAA8AAAD8/wsAAAAMAA8AAAD7/wsAAAAMAA8AAAD7/woAAAAMAA8AAAD8/woAAAAMAA8AAAAKAAoAAAAMAA8AAAALAAoAAAAMAA8AAAAMAAoAAAAMAA8AAAApAAoAAAAMAA8AAAAqAAoAAAAMAA8AAAArAAoAAAAMAA8AAAAXAAsAAAAMAA8AAAAYAAsAAAAMAA8AAAAZAAsAAAAMAA8AAAAaAAsAAAAMAA8AAAAbAAsAAAAMAA8AAAAcAAsAAAAMAA8AAAAdAAsAAAAMAA8AAAA7AAkAAAAMAA8AAAA8AAkAAAAMAA8AAAA8AAgAAAAMAA8AAAA9AAgAAAAMAA8AAAA9AAkAAAAMAA8AAAA8AAoAAAAMAA8AAAA7AAoAAAAMAA8AAAA9AAoAAAAMAA8AAAA+AAkAAAAMAA8AAAA+AAgAAAAMAA8AAAA+AAoAAAAMAA8AAAA7AAsAAAAMAA8AAAA7AAwAAAAMAA8AAAA7AA0AAAAMAA8AAAA8AA0AAAAMAA8AAAA9AA0AAAAMAA8AAAA9AAwAAAAMAA8AAAA9AAsAAAAMAA8AAAA+AAsAAAAMAA8AAAA+AAwAAAAMAA8AAAA+AA0AAAAMAA8AAAA8AAwAAAAMAA8AAAA8AAsAAAAMAA8AAAA=")
+tile_set = ExtResource("5_uxpwa")
+
+[node name="Sky" type="Parallax2D" parent="Level" unique_id=313180366]
+z_index = -12
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Sky" unique_id=839866697]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_p8uat")
+
+[node name="Background1" type="Parallax2D" parent="Level" unique_id=732907471]
+z_index = -10
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background1" unique_id=604393195]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_n34mk")
+
+[node name="Background2" type="Parallax2D" parent="Level" unique_id=929945281]
+z_index = -9
+scroll_scale = Vector2(0.45, 0.45)
+repeat_size = Vector2(1152, 0)
+repeat_times = 5
+
+[node name="Sprite" type="Sprite2D" parent="Level/Background2" unique_id=285013925]
+position = Vector2(576, 260)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_poi3m")
+
+[node name="Trap1" parent="Level" unique_id=1930518021 instance=ExtResource("9_ltxxm")]
+position = Vector2(992, 544)
+
+[node name="Trap2" parent="Level" unique_id=1894763376 instance=ExtResource("10_1kvea")]
+position = Vector2(1215, 598)
+
+[node name="TrapBlade1" parent="Level" unique_id=1595211255 instance=ExtResource("11_00hle")]
+position = Vector2(2144, 512)
+
+[node name="TrapLava1" parent="Level" unique_id=1973564221 instance=ExtResource("13_aiont")]
+position = Vector2(1858, 628)
+
+[node name="TrapLava6" parent="Level" unique_id=56333933 instance=ExtResource("13_aiont")]
+position = Vector2(1730, 629)
+
+[node name="TrapLava7" parent="Level" unique_id=898470209 instance=ExtResource("13_aiont")]
+position = Vector2(1604, 630)
+
+[node name="TrapLava8" parent="Level" unique_id=1921895946 instance=ExtResource("13_aiont")]
+position = Vector2(1536, 630)
+
+[node name="TrapLava9" parent="Level" unique_id=190509625 instance=ExtResource("13_aiont")]
+position = Vector2(1533, 658)
+
+[node name="TrapLava10" parent="Level" unique_id=852889685 instance=ExtResource("13_aiont")]
+position = Vector2(1660, 658)
+
+[node name="TrapLava11" parent="Level" unique_id=993596868 instance=ExtResource("13_aiont")]
+position = Vector2(1788, 658)
+
+[node name="TrapLava12" parent="Level" unique_id=645083409 instance=ExtResource("13_aiont")]
+position = Vector2(1859, 659)
+
+[node name="TrapLava4" parent="Level" unique_id=2017674424 instance=ExtResource("13_aiont")]
+position = Vector2(2685, 629)
+
+[node name="TrapLava5" parent="Level" unique_id=798134659 instance=ExtResource("13_aiont")]
+position = Vector2(2753, 629)
+
+[node name="TrapLava2" parent="Level" unique_id=468752436 instance=ExtResource("13_aiont")]
+position = Vector2(701, 628)
+
+[node name="TrapLava3" parent="Level" unique_id=1792966319 instance=ExtResource("13_aiont")]
+position = Vector2(771, 628)
+
+[node name="MovingPlatform1" parent="Level" unique_id=1836472356 instance=ExtResource("15_6yct6")]
+position = Vector2(1504, 608)
+offset = Vector2(384, 0)
+
+[node name="JumpBoard1" parent="Level" unique_id=1691557238 instance=ExtResource("17_obxcw")]
+position = Vector2(2848, 544)
+
+[node name="Elevator1" parent="Level" unique_id=762081643 instance=ExtResource("19_yogpb")]
+position = Vector2(3808, 608)
+stop_offsets = Array[Vector2]([Vector2(0, 0), Vector2(0, -256)])
+
+[node name="KillZone" parent="Level" unique_id=1373134759 instance=ExtResource("21_tpl7f")]
+position = Vector2(3000, 1400)
+
+[node name="Player2" parent="." unique_id=2106209264 instance=ExtResource("23_7ar4h")]
+position = Vector2(174, 429)
+
+[node name="Coins" type="Node2D" parent="." unique_id=1667370341]
+z_index = 2
+
+[node name="HealPotion" parent="Coins" unique_id=242563240 instance=ExtResource("27_m4fol")]
+position = Vector2(1056, 480)
+
+[node name="BombPickup" parent="Coins" unique_id=1768328182 instance=ExtResource("29_7irkx")]
+position = Vector2(2528, 512)
+
+[node name="ShieldPickup" parent="Coins" unique_id=964235931 instance=ExtResource("31_vsexs")]
+position = Vector2(2912, 160)
+
+[node name="Coin3" parent="Coins" unique_id=251510796 instance=ExtResource("33_txf5p")]
+position = Vector2(224, 512)
+
+[node name="Coin6" parent="Coins" unique_id=154202522 instance=ExtResource("33_txf5p")]
+position = Vector2(416, 512)
+
+[node name="Coin19" parent="Coins" unique_id=89279424 instance=ExtResource("33_txf5p")]
+position = Vector2(1248, 512)
+
+[node name="Coin20" parent="Coins" unique_id=67076508 instance=ExtResource("33_txf5p")]
+position = Vector2(1312, 512)
+
+[node name="Coin21" parent="Coins" unique_id=1285137675 instance=ExtResource("33_txf5p")]
+position = Vector2(1376, 512)
+
+[node name="Coin35" parent="Coins" unique_id=277824125 instance=ExtResource("33_txf5p")]
+position = Vector2(2272, 512)
+
+[node name="Coin45" parent="Coins" unique_id=589576286 instance=ExtResource("33_txf5p")]
+position = Vector2(2912, 512)
+
+[node name="Coin46" parent="Coins" unique_id=1691754200 instance=ExtResource("33_txf5p")]
+position = Vector2(2976, 512)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1869010940]
+
+[node name="Enemy1" parent="Enemies" unique_id=600502477 instance=ExtResource("35_qyqnr")]
+position = Vector2(352, 512)
+
+[node name="Enemy2" parent="Enemies" unique_id=2117034682 instance=ExtResource("35_qyqnr")]
+position = Vector2(1056, 512)
+
+[node name="Enemy3" parent="Enemies" unique_id=1257786120 instance=ExtResource("37_iofu0")]
+position = Vector2(2016, 512)
+
+[node name="Enemy4" parent="Enemies" unique_id=1117304249 instance=ExtResource("35_qyqnr")]
+position = Vector2(2464, 512)
+
+[node name="Enemy5" parent="Enemies" unique_id=704126256 instance=ExtResource("37_iofu0")]
+position = Vector2(3232, 512)
+
+[node name="UserInterface" parent="." unique_id=1799764374 instance=ExtResource("38_h837b")]
+
+[node name="Label" type="Label" parent="UserInterface" unique_id=130344420]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -39.5
+offset_right = 99.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("40_fsvlw")
+theme_override_colors/font_color = Color(0.5529412, 0.38431373, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="Text" type="Node2D" parent="." unique_id=1248666767]
+
+[node name="@Label@2" type="Label" parent="Text" unique_id=1740118413]
+offset_left = -57.0
+offset_top = 105.0
+offset_right = -57.0
+offset_bottom = 105.0
+theme = ExtResource("40_fsvlw")
+text = "นี่เป็นด่านตัวอย่าง
+A D เพื่อเดิน  Space กระโดด
+X ยิงบอลไฟ  C ขว้างระเบิด"
+
+[node name="@Label@3" type="Label" parent="Text" unique_id=1103425595]
+offset_left = 1400.0
+offset_top = 300.0
+offset_right = 1400.0
+offset_bottom = 300.0
+theme = ExtResource("40_fsvlw")
+text = "ใช้แท่นเลื่อน (MovingPlatform)
+ข้ามหุบเหว"
+
+[node name="@Label@4" type="Label" parent="Text" unique_id=1696203980]
+offset_left = 3760.0
+offset_top = 250.0
+offset_right = 3760.0
+offset_bottom = 250.0
+theme = ExtResource("40_fsvlw")
+text = "ขึ้นลิฟต์ (Elevator)
+เพื่อไปประตูทางออก"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=59112622]
+stream = ExtResource("41_mu2dj")
+bus = &"music"
+
+[connection signal="hit_enemy" from="Player2" to="." method="_on_player_hit_enemy"]
+[connection signal="hit_trap" from="Player2" to="." method="_on_player_hit_trap"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://drunner001a2b3"]
+
+[ext_resource type="PackedScene" uid="uid://d27bcsmx82vfa" path="res://Scenes/Actors/enemy.tscn" id="1_l6dcq"]
+[ext_resource type="Script" uid="uid://bx5lotsye1r4s" path="res://Scenes/Actors/monster_small.gd" id="2_fn0gs"]
+[ext_resource type="Texture2D" uid="uid://dea5grw8otb7j" path="res://Assets/Free-Urban-Zombie-Sprite-Sheet-Pixel-Art-Pack/Zombie_1/Walk.png" id="3_l6dcq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn0gs"]
+radius = 10.0
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gv858"]
+radius = 12.0
+height = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_0"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_1"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_2"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_3"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_4"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_5"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_6"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_7"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_8"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r_9"]
+atlas = ExtResource("3_l6dcq")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r_9")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_l6dcq")]
+modulate = Color(0.85, 1.0, 0.7, 1)
+scale = Vector2(0.85, 0.85)
+speed = 190.0
+max_hp = 8
+contact_damage = 4
+score_value = 2
+script = ExtResource("2_fn0gs")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -28)
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CapsuleShape2D_fn0gs")
+
+[node name="CollisionShape2D2" parent="HitArea" index="0"]
+position = Vector2(0, -28)
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CapsuleShape2D_gv858")
+
+[node name="AnimateSprite" type="AnimatedSprite2D" parent="Sprite"]
+position = Vector2(-5, -64)
+sprite_frames = SubResource("SpriteFrames_r1")
+flip_h = true

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://douri0f526muw"]
+
+[ext_resource type="Script" uid="uid://cnog1eivvxrrd" path="res://Scenes/Actors/player_2.gd" id="1_d64iu"]
+[ext_resource type="PackedScene" uid="uid://c5y568p25r7rl" path="res://Scenes/Prefabs/bullet.tscn" id="2_m8xdl"]
+[ext_resource type="PackedScene" uid="uid://be6bg2ybbu81m" path="res://Scenes/Sprites/soldier.tscn" id="3_d64iu"]
+[ext_resource type="Texture2D" uid="uid://dxp77wq60c2rr" path="res://Assets/Textures/CloudTexture.png" id="3_wrdd2"]
+[ext_resource type="PackedScene" uid="uid://vxhfafaw7e8f" path="res://Scenes/Prefabs/bomb_projectile.tscn" id="4_bombproj"]
+[ext_resource type="Script" path="res://Scenes/Actors/side_scroll_camera.gd" id="5_camlock"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d64iu"]
+radius = 13.999144
+height = 69.998276
+
+[sub_resource type="Curve" id="Curve_rtimg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246032, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_17rns"]
+offsets = PackedFloat32Array(0.25, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_17rns"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246032, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_m8xdl"]
+offsets = PackedFloat32Array(0.25, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olg2l"]
+size = Vector2(27.972698, 66.00467)
+
+[node name="Player" type="CharacterBody2D" unique_id=2106209264 groups=["Player"]]
+rotation = 0.00042652956
+collision_layer = 2
+script = ExtResource("1_d64iu")
+bullet_scene = ExtResource("2_m8xdl")
+bomb_projectile_scene = ExtResource("4_bombproj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353250760]
+position = Vector2(-3.9872038, 30.001707)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CapsuleShape2D_d64iu")
+
+[node name="ParticleTrails" type="CPUParticles2D" parent="." unique_id=920331659]
+position = Vector2(-2.9748344, 59.001274)
+scale = Vector2(1.0000001, 1.0000001)
+emitting = false
+amount = 20
+texture = ExtResource("3_wrdd2")
+lifetime = 0.4
+speed_scale = 0.8
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_rtimg")
+color_ramp = SubResource("Gradient_17rns")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="." unique_id=1716791764]
+position = Vector2(-3.9867775, 31.001709)
+scale = Vector2(1.0000001, 1.0000001)
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_sphere_radius = 50.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 15.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_17rns")
+color_ramp = SubResource("Gradient_m8xdl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1449123984]
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1557318082]
+position = Vector2(-3.9863508, 31.005335)
+scale = Vector2(1.0000004, 1.0000004)
+shape = SubResource("RectangleShape2D_olg2l")
+
+[node name="soldier" parent="." unique_id=1717188345 instance=ExtResource("3_d64iu")]
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=339786768]
+position = Vector2(-2.978247, 51.001278)
+script = ExtResource("5_camlock")
+limit_smoothed = true
+position_smoothing_speed = 100.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.6
+drag_bottom_margin = 0.4
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="BulletMarker" type="Marker2D" parent="." unique_id=1128170114]
+position = Vector2(35.00597, 13.985071)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="ShieldVisual" type="Polygon2D" parent="." unique_id=1128170115]
+visible = false
+position = Vector2(-3, 30)
+color = Color(0.3, 0.8, 1, 0.35)
+polygon = PackedVector2Array(42, 0, 38.79, 16.08, 29.7, 29.7, 16.08, 38.79, 0, 42, -16.08, 38.79, -29.7, 29.7, -38.79, 16.08, -42, 0, -38.79, -16.08, -29.7, -29.7, -16.08, -38.79, 0, -42, 16.08, -38.79, 29.7, -29.7, 38.79, -16.08)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_collision_body_entered"]

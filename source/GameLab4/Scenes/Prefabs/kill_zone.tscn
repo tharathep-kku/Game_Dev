@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkillzone001a"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/kill_zone.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kz1"]
+size = Vector2(8000, 200)
+
+[node name="KillZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kz1")

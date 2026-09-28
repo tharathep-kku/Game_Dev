@@ -1,0 +1,30 @@
+ธีม zombie apocalypse
+
+ขั้นตอน 4  สร้าง กับดัก และ วัตถุประกอบฉาก
+เพิ่มกับดักรูปแบบใหม่ ๆ ที่น่าสนใจ เช่น ใบมีด กองไฟลาวา 
+วัตถุสำหรับสร้างด่าน เช่น ลิฟต์ (Elevator)  กระดานเด้ง(JumpBoard) แผ่นเลื่อน (MovingPlatform)  ประตูวาร์ป (Portal gate)
+
+ขั้นตอน 5  สร้าง ไอเท็ม 
+สร้างไอเท็มเช่น jetpack โล่ ระเบิดเก็บ
+
+https://craftpix.net/freebies/free-game-coins-sprite-sheets/
+
+
+ขั้นตอน 6  แก้ไขด่าน level_01, level_02, level_03, level_04
+ใช้ TileSet ใหม่ ออกแบบด่าน ที่สวยงามน่าเล่น ประมาณ 4 ด่าน
+ให้มีขนาดพอสมควร
+กำหนด Polygon ให้ Tile แต่ละอัน เพื่อใช้ตรวจสอบการชน
+
+
+
+https://craftpix.net/freebies/filter/tilesets/
+https://www.kenney.nl/assets/new-platformer-pack 
+https://kenney.nl/assets/abstract-platformer   
+ขั้นตอน 7  ทำพื้นหลัง Parallax
+https://craftpix.net/freebies/filter/game-backgrounds/ 
+https://free-game-assets.itch.io/free-parallax-2d-backgrounds 
+ขั้นตอน 8 แก้ไข GameOver และ WinGame
+เพิ่มเสียง ภาพประกอบ ในฉากจบ และ ฉากชนะ
+
+ขั้นตอน 9 แก้ไข Music และ เสียง Effect
+ปรับแก้เสียงเพลงประกอบ และ เสียง Effect

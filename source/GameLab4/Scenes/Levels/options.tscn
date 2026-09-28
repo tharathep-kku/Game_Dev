@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cuq7vusmo7y5g"]
+
+[ext_resource type="PackedScene" uid="uid://puc4l62gx6et" path="res://Scenes/Prefabs/button_exit.tscn" id="1_6oxap"]
+[ext_resource type="Theme" uid="uid://d3eng5cvycmjf" path="res://Scenes/Prefabs/theme.tres" id="2_wto1r"]
+
+[node name="Node2D" type="Node2D" unique_id=1481218610]
+
+[node name="btnExit" parent="." unique_id=1633606001 instance=ExtResource("1_6oxap")]
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 174.0
+offset_bottom = 86.0
+
+[node name="Title" type="Label" parent="." unique_id=714304452]
+offset_left = 412.0
+offset_top = 45.0
+offset_right = 713.0
+offset_bottom = 77.0
+theme = ExtResource("2_wto1r")
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Game Options"
+horizontal_alignment = 1
+vertical_alignment = 1

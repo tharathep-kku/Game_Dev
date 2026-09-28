@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3n9p2q7lava01"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/trap_lava.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://5fykbdi0qd7" path="res://Assets/Kenney/Tiles/lava_top.png" id="2_top"]
+[ext_resource type="Texture2D" uid="uid://ccpcfgygp8ugt" path="res://Assets/Kenney/Tiles/lava.png" id="3_fill"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_danger"]
+size = Vector2(128, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_warning"]
+size = Vector2(220, 110)
+
+[sub_resource type="Animation" id="Animation_lava_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lava_glow"]
+resource_name = "glow"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.7, 0.4, 1), Color(1, 0.95, 0.6, 1), Color(1, 0.7, 0.4, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lava1"]
+_data = {
+&"RESET": SubResource("Animation_lava_reset"),
+&"glow": SubResource("Animation_lava_glow")
+}
+
+[node name="TrapLava" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="DangerZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="DangerShape" type="CollisionShape2D" parent="DangerZone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_danger")
+
+[node name="WarningZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="WarningShape" type="CollisionShape2D" parent="WarningZone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_warning")
+
+[node name="FillLeft" type="Sprite2D" parent="."]
+position = Vector2(-32, 12)
+texture = ExtResource("3_fill")
+
+[node name="FillRight" type="Sprite2D" parent="."]
+position = Vector2(32, 12)
+texture = ExtResource("3_fill")
+
+[node name="Top" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Sprite2D" parent="Top"]
+position = Vector2(-32, -20)
+texture = ExtResource("2_top")
+
+[node name="TopRight" type="Sprite2D" parent="Top"]
+position = Vector2(32, -20)
+texture = ExtResource("2_top")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lava1")
+}
+autoplay = "glow"

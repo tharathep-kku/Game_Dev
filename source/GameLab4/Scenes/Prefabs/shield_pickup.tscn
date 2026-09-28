@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bshieldpickup01"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/shield_pickup.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dmwkola701o2c" path="res://Assets/Kenney/Items/gem_blue.png" id="2_gem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shp1"]
+radius = 20.0
+
+[node name="ShieldPickup" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_gem")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbombpickup01a"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/bomb_pickup.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bmbm1kfjtlf12" path="res://Assets/Kenney/Items/bomb.png" id="2_bomb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpk1"]
+radius = 20.0
+
+[node name="BombPickup" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bpk1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bomb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
